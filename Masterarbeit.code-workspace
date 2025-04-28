@@ -7,7 +7,14 @@
 	"settings": {
 		"material-icon-theme.folders.associations": {
 			"venv": "environment",
-		  }
+		  }, 
+		  "editor.tokenColorCustomizations": {
+  "comments": {
+    "foreground": "#87CEFA",  // z.B. helles Blau oder wähle eine andere Farbe
+    "fontStyle": "italic" // optional: kursiv
+  }
+}
+
 	}
 
 }
