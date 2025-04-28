@@ -4,5 +4,10 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+
+	},
+	"material-icon-theme.folders.associations": {
+		"venv": "environment",
+	  }
 }
