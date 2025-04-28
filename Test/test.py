@@ -42,4 +42,4 @@ print(1)
 
 path1 = r"C:\Users\Surface\Masterarbeit\data\Baseline.xlsx"
 
-df = load_data(path1)
+
