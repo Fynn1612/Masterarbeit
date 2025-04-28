@@ -8,6 +8,6 @@
 
 	},
 	"material-icon-theme.folders.associations": {
-		"venv": "environment",
+		"venv": "docs",
 	  }
 }
