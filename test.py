@@ -1,4 +1,11 @@
 import numpy as np
+import torch.nn as nn
+
+model = nn.ModuleList([nn.Linear(10, 10)])
+
+
+def g(x, y):
+    return x + y
 
 
 print("hello World")
@@ -6,6 +13,16 @@ print("hello World")
 
 def add(x, y):
     return x + y
+
+
+# TODO:
+# NOTE: This is a test function
+# FIXME:
+#!
+# ?
+# *
+# // regular comment
+# * hier wird gecoded
 
 
 def devide(x, y):
