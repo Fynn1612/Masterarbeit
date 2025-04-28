@@ -38,3 +38,7 @@ a = np.random.randint(1, 10, size=(3, 3))
 print(a)
 
 print(1)
+
+path1 = r"C:\Users\Surface\Masterarbeit\data\Baseline.xlsx"
+
+df = load_data(path1)
