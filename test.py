@@ -20,3 +20,4 @@ np.random.seed(0)
 a = np.random.randint(1, 10, size=(3, 3))
 print(a)
 
+print(1)
