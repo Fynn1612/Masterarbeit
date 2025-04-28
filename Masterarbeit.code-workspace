@@ -5,9 +5,9 @@
 		}
 	],
 	"settings": {
+		"material-icon-theme.folders.associations": {
+			"venv": "environment",
+		  }
+	}
 
-	},
-	"material-icon-theme.folders.associations": {
-		"venv": "docs",
-	  }
 }
