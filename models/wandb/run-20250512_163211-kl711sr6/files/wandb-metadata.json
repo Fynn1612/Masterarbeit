@@ -1,0 +1,31 @@
+{
+  "os": "Windows-11-10.0.22631-SP0",
+  "python": "CPython 3.12.10",
+  "startedAt": "2025-05-12T14:32:12.083314Z",
+  "program": "c:\\Users\\Surface\\Masterarbeit\\models\\NGBoost.ipynb",
+  "codePath": "models\\NGBoost.ipynb",
+  "git": {
+    "remote": "https://github.com/Fynn1612/Masterarbeit",
+    "commit": "b264f2e7c7223dd0c8d8aff01092d3ec513c857e"
+  },
+  "email": "f.schueder95@gmx.de",
+  "root": "c:\\Users\\Surface\\Masterarbeit\\models",
+  "host": "Fynn",
+  "executable": "c:\\Users\\Surface\\Masterarbeit\\.venv\\Scripts\\python.exe",
+  "codePathLocal": "NGBoost.ipynb",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "255129022464",
+      "used": "133450653696"
+    }
+  },
+  "memory": {
+    "total": "8155930624"
+  },
+  "cpu": {
+    "count": 4,
+    "countLogical": 8
+  }
+}

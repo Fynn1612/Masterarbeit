@@ -1,0 +1,57 @@
+{"time":"2025-05-12T16:32:12.0876403+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"c:\\Users\\Surface\\Masterarbeit\\models\\wandb\\run-20250512_163211-kl711sr6\\logs\\debug-core.log"}
+{"time":"2025-05-12T16:32:13.1461254+02:00","level":"INFO","msg":"created new stream","id":"kl711sr6"}
+{"time":"2025-05-12T16:32:13.1461254+02:00","level":"INFO","msg":"stream: started","id":"kl711sr6"}
+{"time":"2025-05-12T16:32:13.1461254+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"kl711sr6"}
+{"time":"2025-05-12T16:32:13.1466638+02:00","level":"INFO","msg":"handler: started","stream_id":"kl711sr6"}
+{"time":"2025-05-12T16:32:13.1461254+02:00","level":"INFO","msg":"sender: started","stream_id":"kl711sr6"}
+{"time":"2025-05-12T16:32:13.5070366+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-05-12T16:32:28.5326445+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:32:43.5281692+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:32:58.5378033+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:33:13.5277232+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:33:28.5375685+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:33:43.5386083+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:33:58.5295264+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:34:13.5417507+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:34:28.5452755+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:34:43.5305308+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:34:58.5410089+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:35:13.5433471+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:35:28.531783+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:35:43.5277866+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:35:58.5288678+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:36:13.5398617+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:36:28.5349175+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:36:43.530321+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:36:58.5337499+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:37:13.5305154+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:37:28.5411111+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:37:43.5328859+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:37:58.5421517+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:38:13.5360651+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:38:28.5319717+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:38:43.5316354+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:38:58.5450633+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:39:13.5462038+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:39:28.532249+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:39:43.5310399+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:39:58.534645+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:40:13.533686+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:40:28.5426389+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:40:43.5422016+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:40:58.5409264+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:41:13.5378126+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:41:13.8147749+02:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-12T16:41:15.0111916+02:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-05-12T16:41:28.5349668+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:41:43.5378088+02:00","level":"ERROR","msg":"monitor: error sampling metrics: Unzulässige Funktion."}
+{"time":"2025-05-12T16:41:56.9488914+02:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-05-12T16:45:19.1178904+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-05-12T16:45:19.1178904+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-05-12T16:45:19.910028+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-05-12T16:45:20.1306181+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-05-12T16:45:20.15065+02:00","level":"INFO","msg":"stream: closing","id":"kl711sr6"}
+{"time":"2025-05-12T16:45:20.15065+02:00","level":"INFO","msg":"handler: closed","stream_id":"kl711sr6"}
+{"time":"2025-05-12T16:45:20.15065+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kl711sr6"}
+{"time":"2025-05-12T16:45:20.15065+02:00","level":"INFO","msg":"sender: closed","stream_id":"kl711sr6"}
+{"time":"2025-05-12T16:45:20.15065+02:00","level":"INFO","msg":"stream: closed","id":"kl711sr6"}
