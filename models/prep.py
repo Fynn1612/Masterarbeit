@@ -17,10 +17,8 @@ def prep(df: pd.DataFrame, cat_var: str) -> pd.DataFrame:
     # Calculate the frequency of each category
     freq_df = df[cat_var].value_counts()
     df[f"{cat_var}_freq"] = df[cat_var].map(freq_df).fillna(0)
-    # drop the original categorical variable from the DataFrame  
-    freq_df.columns = [cat_var, 'frequency']
-    
+       
     # Drop the original categorical variable from the DataFrame
     df = df.drop(columns=[cat_var], axis=1, inplace=True)
     
-    return freq_df
+    return df
