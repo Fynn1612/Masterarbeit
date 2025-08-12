@@ -45,7 +45,7 @@ def load_tranform_and_split_data(target, split_ratio=(0.6, 0.2, 0.2)):
     # check the computer name to determine the path to the data
     if os.environ['COMPUTERNAME'] == 'FYNN':            # name of surface PC
         path = r"C:\Users\Surface\Masterarbeit\data\Produktionsdaten\WZ_2_Feature_Engineered_Fynn6.xlsx"
-    elif os.environ['COMPUTERNAME'] == 'DEIN_DESKTOPNAME':  # replace with your desktop name
+    elif os.environ['COMPUTERNAME'] == 'FYNNS-PC':  # desktop name
         path = r"C:\Users\test\Masterarbeit\data\WZ_2_Feature_Engineered_Fynn6.xlsx"
         
     else:
