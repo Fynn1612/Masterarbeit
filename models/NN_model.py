@@ -4,6 +4,7 @@
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
+
 # create a class for Neural Network with a custom architecture
 class Custom_NN_Model(torch.nn.Module):
     def __init__(self, input_dim, hidden_dims, output_dim, do_rate, loss_type = None):
@@ -67,8 +68,9 @@ def mse_loss(model, x, y):
     return mse
 
 # training functions for the model, optimizer Adam, loss function MSELoss, data loader for batching the data, early stopping
-def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tensor, batch_size=128, n_epochs=1000, 
-                lr=0.01, weight_decay=0.0001, patience=20, loss_type= 'mse', device='cpu'):
+def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tensor, batch_size=128, 
+                optimizer=torch.optim.Adam,
+                n_epochs=1000, lr=0.01, weight_decay=0.0001, patience=20, loss_type= 'mse', device='cpu'):
         
     """
         Function for training neural Network.
