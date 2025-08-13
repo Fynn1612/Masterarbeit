@@ -69,8 +69,7 @@ def mse_loss(model, x, y):
 
 # training functions for the model, optimizer Adam, loss function MSELoss, data loader for batching the data, early stopping
 def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tensor, batch_size=128, 
-                optimizer=torch.optim.Adam,
-                n_epochs=1000, lr=0.01, weight_decay=0.0001, patience=20, loss_type= 'mse', device='cpu'):
+                optimizer=None, n_epochs=1000,  patience=20, loss_type= 'mse', device='cpu'):
         
     """
         Function for training neural Network.
@@ -81,8 +80,6 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
         @param y_val_tensor     The vector of target values for the validation data.
         @param batch_size       The size of the batches for training.
         @param n_epochs         The number of epochs for training.
-        @param lr               The learning rate for the optimizer.
-        @param weight_decay     The weight decay for the optimizer.
         @param patience         The number of epochs with no improvement after which training will be stopped.
         @param loss_type        The type of loss function to be used, e.g., 'mse' for Mean Squared Error or 'heteroscedastic' for heteroscedastic regression.
         @param device           The device to run the model on, e.g., 'cpu' or 'cuda'.
@@ -95,7 +92,9 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
           
     # Adam optimizer with weight decay for regularization
-    optimizer = torch.optim.AdamW(params = model.parameters(), lr = lr, weight_decay=weight_decay)  
+    if optimizer is None:  # If no optimizer is provided, create a new one
+        optimizer = torch.optim.AdamW(params = model.parameters(), lr = 0.01, weight_decay=0.0001)  
+        print("Using default AdamW optimizer with lr=0.01 and weight_decay=0.0001")
 
     # Early Stopping values
     best_val_loss = np.inf
