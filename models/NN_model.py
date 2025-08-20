@@ -69,7 +69,7 @@ def mse_loss(model, x, y):
 
 # training functions for the model, optimizer Adam, loss function MSELoss, data loader for batching the data, early stopping
 def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tensor, batch_size=128, 
-                optimizer=None, n_epochs=1000,  patience=20, loss_type= 'mse', device='cpu'):
+                optimizer=None, n_epochs=1000,  patience=20, loss_type= 'mse', device= None):
         
     """
         Function for training neural Network.
@@ -91,6 +91,9 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
     train_dataset = TensorDataset(X_train_tensor, y_train_tensor)
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
           
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Using device: {device}")
+
     # Adam optimizer with weight decay for regularization
     if optimizer is None:  # If no optimizer is provided, create a new one
         optimizer = torch.optim.AdamW(params = model.parameters(), lr = 0.01, weight_decay=0.0001)  
