@@ -1,2 +1,31 @@
 #lokale Dateien
 data
+models/Modelsaves/
+
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Virtuelle Umgebungen
+.venv/
+env/
+venv/
+
+# VS Code Einstellungen
+.vscode/
+
+# Systemdateien
+.DS_Store
+Thumbs.db
+
+# Logfiles
+*.log
+
+# Sonstige temporäre Dateien
+*.tmp
+*.bak
