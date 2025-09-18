@@ -29,3 +29,6 @@ Thumbs.db
 # Sonstige temporäre Dateien
 *.tmp
 *.bak
+
+/models/Modelresults/
+/models/Modelsaves/
