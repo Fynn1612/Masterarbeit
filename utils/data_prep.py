@@ -7,15 +7,24 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 import os
 import pandas as pd
+import torch
+import numpy as np
+import random
 
 # function that transforms the categorical variables in the dataframes to their frequency
 # delete the original columns from the dataframes
 def cat_transform(train_df, val_df, test_df, cat_vars):
     """
-    @param train_set, val_set, test_set    dataframes with the data
-    @param cat_ vars                       list categorical variables to transform
-    
-    @return train_df, val_df, test_df      train_df, val_df, test_df: original dataframes with the frequency of each category and removed original columns
+    Transform categorical variables to their frequency in the dataframe.
+    The original columns are removed from the dataframes.
+
+    Args:
+        train_set, val_set, test_set:    dataframes with the data
+        cat_vars:                       list categorical variables to transform
+
+    Returns:
+        train_df, val_df, test_df
+        original dataframes with the frequency of each category and removed original columns
     """
     # loop through each categorical variable
     if not isinstance(cat_vars, list):
@@ -36,10 +45,16 @@ def cat_transform(train_df, val_df, test_df, cat_vars):
 # function that loads, transforms and splits the data it into train, val and test sets, and returns the feature names
 def load_tranform_and_split_data(target, split_ratio=(0.6, 0.2, 0.2)):
     """
-    @param target                                                                 target variable to predict
-    @param split_ratio                                                            tuple with the split ratio for train, val and test sets, default is (0.6, 0.2, 0.2)
-    
-    @return X_train, X_val, X_test, y_train, y_val, y_test, feature_names         splitted and transformed dataframes with the features and target variable, and the feature names
+    Load, transform and split the data into train, val and test sets.
+    Default: 60% training, 20% validation, 20% test set.
+
+    Args:
+        target : target variable to predict
+        split_ratio : tuple with the split ratio for train, val and test sets, default is (0.6, 0.2, 0.2)
+
+    Returns: 
+        X_train, X_val, X_test, y_train, y_val, y_test, feature_names 
+        splitted and transformed dataframes with the features and target variable, and the feature names
     """
     
     # check the computer name to determine the path to the data
@@ -86,4 +101,21 @@ def load_tranform_and_split_data(target, split_ratio=(0.6, 0.2, 0.2)):
     X_test = data_pipeline.transform(X_test_prep)
     
     return X_train, X_val, X_test, y_train, y_val, y_test, feature_names
+
+# function to set the seed for reproducibility
+def set_seed(seed: int):
+    """
+    Set the seed for reproducibility.
+
+    Args:
+        seed : seed for the random number generator
+    """
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 

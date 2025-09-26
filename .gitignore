@@ -30,5 +30,5 @@ Thumbs.db
 *.tmp
 *.bak
 
-/models/Modelresults/
 /models/Modelsaves/
+/Test

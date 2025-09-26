@@ -10,11 +10,13 @@ class Custom_NN_Model(torch.nn.Module):
     def __init__(self, input_dim, hidden_dims, output_dim, do_rate, loss_type = None):
         """
         Neural Network model with a custom architecture.
-        @param input_dim:   number of input features
-        @param hidden_dims: list of integers representing the number of neurons in each hidden layer e.g. [64, 128, 64, 32]
-        @param output_dim:  number of output features (usually 1 for regression tasks)
-        @param do_rate:     dropout rate for regularization
-        @param loss_type:   type of loss function to use, either 'mse' for Mean Squared Error or 'heteroscedastic' for heteroscedastic regression 
+        
+        Args:
+            input_dim:   number of input features
+            hidden_dims: list of integers representing the number of neurons in each hidden layer e.g. [64, 128, 64, 32]
+            output_dim:  number of output features (usually 1 for regression tasks)
+            do_rate:     dropout rate for regularization
+            loss_type:   type of loss function to use, either 'mse' for Mean Squared Error or 'heteroscedastic' for heteroscedastic regression
         """
         super(Custom_NN_Model, self).__init__()
         self.input_dim = input_dim
@@ -53,6 +55,16 @@ class Custom_NN_Model(torch.nn.Module):
     
 # create a custom loss function for heteroscedastic regression
 def heteroscedastic_loss(model, x, y ):
+    """
+    Heteroscedastic loss function for regression tasks.
+
+    Args:
+        model: The neural network model.
+        x:     The input features.
+        y:     The target values.
+
+    Returns:
+        loss:  The computed heteroscedastic loss."""
     mean, log_var =  model(x)
     precision = torch.exp(-1* log_var)  # precision = 1/var = exp(-log_var)
     loss = torch.mean(0.5 * precision * (y - mean) ** 2 + 0.5 * log_var)
@@ -60,6 +72,17 @@ def heteroscedastic_loss(model, x, y ):
     return loss
 
 def mse_loss(model, x, y):
+    """
+    Mean Squared Error loss function for regression tasks.
+
+    Args:
+        model: The neural network model.
+        x:     The input features.
+        y:     The target values.
+
+    Returns:    
+        mse:   The computed Mean Squared Error loss.
+    """
     # Mean Squared Error loss function
     output = model(x)
     loss = torch.nn.MSELoss(reduction='mean')
@@ -70,21 +93,23 @@ def mse_loss(model, x, y):
 # training functions for the model, optimizer Adam, loss function MSELoss, data loader for batching the data, early stopping
 def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tensor, batch_size=128, 
                 optimizer=None, n_epochs=1000,  patience=20, loss_type= 'mse', device= None):
-        
     """
-        Function for training neural Network.
-        @param model            The neural network model to be trained.
-        @param X_train_tensor   The matrix of features for the training data.
-        @param y_train_tensor   The vector of target values for the training data.
-        @param X_val_tensor     The matrix of features for the validation data.
-        @param y_val_tensor     The vector of target values for the validation data.
-        @param batch_size       The size of the batches for training.
-        @param n_epochs         The number of epochs for training.
-        @param patience         The number of epochs with no improvement after which training will be stopped.
-        @param loss_type        The type of loss function to be used, e.g., 'mse' for Mean Squared Error or 'heteroscedastic' for heteroscedastic regression.
-        @param device           The device to run the model on, e.g., 'cpu' or 'cuda'.
-                
-        @return model          The trained neural network model.
+    Train a neural network model.
+    
+    Args:
+        model: The neural network model to be trained.
+        X_train_tensor: The matrix of features for the training data.
+        y_train_tensor: The vector of target values for the training data.
+        X_val_tensor: The matrix of features for the validation data.
+        y_val_tensor: The vector of target values for the validation data.
+        batch_size: The size of the batches for training.
+        n_epochs: The number of epochs for training.
+        patience: The number of epochs with no improvement after which training will be stopped.
+        loss_type: The type of loss function to be used, e.g., 'mse' for Mean Squared Error or 'heteroscedastic' for heteroscedastic regression.
+        device: The device to run the model on, e.g., 'cpu' or 'cuda'.
+
+    Returns:
+        model: The trained neural network model.
     """
     
     # DataLoader for batching the data
