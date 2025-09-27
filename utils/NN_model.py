@@ -4,6 +4,7 @@
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
+from sklearn.metrics import r2_score
 
 # create a class for Neural Network with a custom architecture
 class Custom_NN_Model(torch.nn.Module):
@@ -92,7 +93,7 @@ def mse_loss(model, x, y):
 
 # training functions for the model, optimizer Adam, loss function MSELoss, data loader for batching the data, early stopping
 def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tensor, batch_size=128, 
-                optimizer=None, n_epochs=1000,  patience=20, loss_type= 'mse', device= None):
+                optimizer=None, n_epochs=1000,  patience=50, loss_type= 'mse', device= None):
     """
     Train a neural network model.
     
@@ -107,15 +108,12 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
         patience: The number of epochs with no improvement after which training will be stopped.
         loss_type: The type of loss function to be used, e.g., 'mse' for Mean Squared Error or 'heteroscedastic' for heteroscedastic regression.
         device: The device to run the model on, e.g., 'cpu' or 'cuda'.
+        model_type: The type of model, e.g., 'MC_Dropout' or 'Deep_Ensemble'.
 
     Returns:
         model: The trained neural network model.
     """
-    
-    # DataLoader for batching the data
-    train_dataset = TensorDataset(X_train_tensor, y_train_tensor)
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-          
+             
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
@@ -124,11 +122,28 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
         optimizer = torch.optim.AdamW(params = model.parameters(), lr = 0.01, weight_decay=0.0001)  
         print("Using default AdamW optimizer with lr=0.01 and weight_decay=0.0001")
 
+    if torch.cuda.is_available():
+        X_train_tensor = X_train_tensor.cuda()
+        X_val_tensor = X_val_tensor.cuda()
+        y_train_tensor = y_train_tensor.cuda()
+        y_val_tensor = y_val_tensor.cuda()
+
+    print(f"X_train_tensor device: {X_train_tensor.device}")
+    print(f"y_train_tensor device: {y_train_tensor.device}")
+    print(f"X_val_tensor device: {X_val_tensor.device}")
+    print(f"y_val_tensor device: {y_val_tensor.device}")
+
+    # DataLoader for batching the data
+    train_dataset = TensorDataset(X_train_tensor, y_train_tensor)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+
     # Early Stopping values
     best_val_loss = np.inf
     epochs_no_improve = 0
     loss_history = []
     val_loss_history = []
+    model.to(device)  # Move model to the device (GPU or CPU)
+    print("model device:", next(model.parameters()).device)
 
     for epoch in range(n_epochs):
         model.train()                           # Set model to training mode
@@ -136,6 +151,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
         for X_batch, y_batch in train_loader:   # loop over all batches in the DataLoader
             X_batch = X_batch.to(device)                  # Move data to the device (GPU or CPU)
             y_batch = y_batch.to(device)
+            print(f"X_batch device: {X_batch.device}, y_batch device: {y_batch.device}")
             optimizer.zero_grad()               # Reset gradients
 
             # Forward pass
@@ -154,7 +170,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
         # calculate validation loss
         model.eval()                            # Set model to evaluation mode
         with torch.no_grad():
-
+            print(f"X_val_tensor device: {X_val_tensor.device}, y_val_tensor device: {y_val_tensor.device}")
             # Forward pass
             # Depending on the loss type, we either use heteroscedastic loss or MSE
             if loss_type == 'mse' :
@@ -177,7 +193,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
             if epochs_no_improve >= patience:
                 print(f"Early stopping at epoch {epoch+1}, Best Val Loss: {best_val_loss:.4f}")
                 model.load_state_dict(best_model_state)
-                break     
+                break  
    
     return model
 
