@@ -181,3 +181,32 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
    
     return model
 
+# function to create an ensemble of n models with the same architecture and optimizer
+def create_ensemble(n, input_dim, hidden_dims, do_rate, loss_type, lr, weight_decay, output_dim=1):
+    """
+    Create an ensemble of n models with the same architecture and optimizer.
+
+    Args:
+        n: number of models in the ensemble
+        input_dim: number of input features
+        hidden_dims: list of integers representing the number of neurons in each hidden layer e.g.
+        output_dim: number of output features 
+        do_rate: dropout rate for regularization
+        loss_type: type of loss function to use, either 'mse' for Mean Squared Error or 'heteroscedastic' for heteroscedastic regression
+        lr: learning rate for the optimizer
+        weight_decay: weight decay for regularization in the optimizer
+
+    Returns:
+        nets_ops: list of tuples containing the model and optimizer for each model in the ensemble
+    """
+
+    nets_ops = []
+
+    for i in range(n):
+        net = Custom_NN_Model(input_dim=input_dim, hidden_dims=hidden_dims, output_dim=output_dim, 
+                              do_rate=do_rate, loss_type=loss_type)  # Create model instance and move to device
+        optimizer = torch.optim.AdamW(net.parameters(), lr=lr, weight_decay=weight_decay)  # Create optimizer
+        nets_ops.append((net, optimizer))
+
+    return nets_ops
+
