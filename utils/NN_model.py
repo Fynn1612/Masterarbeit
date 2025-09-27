@@ -4,7 +4,6 @@
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
-from sklearn.metrics import r2_score
 
 # create a class for Neural Network with a custom architecture
 class Custom_NN_Model(torch.nn.Module):
@@ -113,7 +112,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
     Returns:
         model: The trained neural network model.
     """
-             
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
@@ -127,11 +126,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
         X_val_tensor = X_val_tensor.cuda()
         y_train_tensor = y_train_tensor.cuda()
         y_val_tensor = y_val_tensor.cuda()
-
-    print(f"X_train_tensor device: {X_train_tensor.device}")
-    print(f"y_train_tensor device: {y_train_tensor.device}")
-    print(f"X_val_tensor device: {X_val_tensor.device}")
-    print(f"y_val_tensor device: {y_val_tensor.device}")
+        model = model.cuda()
 
     # DataLoader for batching the data
     train_dataset = TensorDataset(X_train_tensor, y_train_tensor)
@@ -141,17 +136,15 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
     best_val_loss = np.inf
     epochs_no_improve = 0
     loss_history = []
-    val_loss_history = []
-    model.to(device)  # Move model to the device (GPU or CPU)
-    print("model device:", next(model.parameters()).device)
+    val_loss_history = []   
 
     for epoch in range(n_epochs):
-        model.train()                           # Set model to training mode
+        model.train()  # Set model to training mode                        
         batch_losses = []
         for X_batch, y_batch in train_loader:   # loop over all batches in the DataLoader
             X_batch = X_batch.to(device)                  # Move data to the device (GPU or CPU)
             y_batch = y_batch.to(device)
-            print(f"X_batch device: {X_batch.device}, y_batch device: {y_batch.device}")
+            
             optimizer.zero_grad()               # Reset gradients
 
             # Forward pass
@@ -170,8 +163,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
         # calculate validation loss
         model.eval()                            # Set model to evaluation mode
         with torch.no_grad():
-            print(f"X_val_tensor device: {X_val_tensor.device}, y_val_tensor device: {y_val_tensor.device}")
-            # Forward pass
+            
             # Depending on the loss type, we either use heteroscedastic loss or MSE
             if loss_type == 'mse' :
                 val_loss = mse_loss(model, X_val_tensor, y_val_tensor)
@@ -220,7 +212,7 @@ def create_ensemble(n, input_dim, hidden_dims, do_rate, loss_type, lr, weight_de
 
     for i in range(n):
         net = Custom_NN_Model(input_dim=input_dim, hidden_dims=hidden_dims, output_dim=output_dim, 
-                              do_rate=do_rate, loss_type=loss_type)  # Create model instance and move to device
+                              do_rate=do_rate, loss_type=loss_type)  # Create model instance
         optimizer = torch.optim.AdamW(net.parameters(), lr=lr, weight_decay=weight_decay)  # Create optimizer
         nets_ops.append((net, optimizer))
 
