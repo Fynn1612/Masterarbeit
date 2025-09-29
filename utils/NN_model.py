@@ -118,7 +118,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
 
     # Adam optimizer with weight decay for regularization
     if optimizer is None:  # If no optimizer is provided, create a new one
-        optimizer = torch.optim.AdamW(params = model.parameters(), lr = 0.01, weight_decay=0.0001)  
+        optimizer = torch.optim.AdamW(params = model.parameters(), lr = 0.001, weight_decay=0.0001)  
         print("Using default AdamW optimizer with lr=0.01 and weight_decay=0.0001")
 
     if torch.cuda.is_available():
@@ -158,7 +158,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
             loss.backward()                     # Backpropagation
             optimizer.step()                    # Update weights
             batch_losses.append(loss.item())   
-        loss_history.append(loss.item())    # Save loss value
+        loss_history.append(np.mean(batch_losses))    # Save loss value
 
         # calculate validation loss
         model.eval()                            # Set model to evaluation mode
@@ -184,9 +184,9 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
             epochs_no_improve += 1
             if epochs_no_improve >= patience:
                 print(f"Early stopping at epoch {epoch+1}, Best Val Loss: {best_val_loss:.4f}")
-                model.load_state_dict(best_model_state)
+                model.load_state_dict(best_model_state) # Load the best model state
                 break  
-   
+    model.load_state_dict(best_model_state)  # Load the best model state
     return model
 
 # function to create an ensemble of n models with the same architecture and optimizer
