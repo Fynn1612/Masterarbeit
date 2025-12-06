@@ -1,6 +1,8 @@
 # Master's Thesis: Uncertainty Quantification Methods for Regression
 
-This repository contains the implementation and evaluation of multiple uncertainty quantification (UQ) methods for regression tasks, developed as part of a Master's thesis.
+This repository contains the implementation and evaluation of four uncertainty quantification (UQ) methods for regression tasks, developed as part of the Master's thesis:
+
+"Reliable Flange Length Estimation in Deep Drawing: A Comparative Study of Uncertainty-Aware Machine Learning Models Using Real-World Data"
 
 ## Overview
 
@@ -21,21 +23,19 @@ Masterarbeit/
 │ ├── GPR.ipynb
 │ ├── NGBoost.ipynb
 │ ├── Modelresults/ # Saved predictions and results
-│ └── Modelsaves/ # Trained model checkpoints
 ├── utils/ # Core utility modules
 │ ├── data_prep.py # Data loading and preprocessing
 │ ├── NN_model.py # Neural network architecture and training
 │ └── metrices.py # Custom evaluation metrics
-├── Test/ # Experimental notebooks and tests
 ├── data/ # Production data (not included in repo)
 └── requirements.txt # Python dependencies
 ```
 
 ## Key Features
 
-- **Heteroscedastic Uncertainty**: Decomposition into epistemic and aleatoric uncertainty
+- **Heteroscedastic Uncertainty**: Decomposition into epistemic and aleatoric uncertainty for MC Dropout and Deep Ensembles
 - **Hyperparameter Optimization**: Optuna-based search for all methods
-- **Comprehensive Evaluation**: RMSE, MAE, R², NLL, CRPS, Coverage, MPIW
+- **Comprehensive Evaluation**: RMSE, MAE, R², Correlation, NLL, CRPS, Coverage, MPIW
 - **Reproducibility**: Fixed random seeds and consistent train/val/test splits
 - **GPU Acceleration**: CUDA support for PyTorch models
 
@@ -56,11 +56,8 @@ pip install -r requirements.txt
 - scikit-learn
 - pandas, numpy, matplotlib
 
-## Usage
-1. **Data Preparation**: Configure the data path in `utils/data_prep.py` based on your system
-2. **Run Notebooks**: Execute notebooks in `models/` folder for each UQ method
-3. **Results**: Predictions and metrics are saved in `models/Modelresults/`
-
+## Usage:
+All models are implemented in Jupyter notebooks.
 Each notebook follows the same structure:
 - Data loading and preprocessing
 - Hyperparameter optimization with Optuna
