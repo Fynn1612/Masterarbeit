@@ -7,13 +7,13 @@ This repository contains the implementation and evaluation of multiple uncertain
 The project compares four different uncertainty quantification approaches:
 - **MC Dropout** (Heteroscedastic)
 - **Deep Ensembles** (Heteroscedastic)
-- **Gaussian Process Regression** (Variational Inference)
+- **Sparse Gaussian Process Regression**
 - **NGBoost** (Natural Gradient Boosting)
 
 Each method is evaluated across 10 independent runs with different random seeds to ensure robust and reproducible results.
 
 ## Project Structure
-
+```
 Masterarbeit/
 ├── models/ # Jupyter notebooks for each UQ method
 │ ├── Deep Ensembles.ipynb
@@ -29,7 +29,7 @@ Masterarbeit/
 ├── Test/ # Experimental notebooks and tests
 ├── data/ # Production data (not included in repo)
 └── requirements.txt # Python dependencies
-
+```
 
 ## Key Features
 
