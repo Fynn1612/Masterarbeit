@@ -1,8 +1,7 @@
-# Master's Thesis: Uncertainty Quantification Methods for Regression
+# Master's Thesis: "Reliable Flange Length Estimation in Deep Drawing: A Comparative Study of Uncertainty-Aware Machine Learning Models Using Real-World Data"
 
-This repository contains the implementation and evaluation of four uncertainty quantification (UQ) methods for regression tasks, developed as part of the Master's thesis:
+This repository contains the implementation and evaluation of four uncertainty quantification (UQ) methods for regression tasks on a real-wolrd dataset from a deep drawing process, developed as part of the Master's thesis.
 
-"Reliable Flange Length Estimation in Deep Drawing: A Comparative Study of Uncertainty-Aware Machine Learning Models Using Real-World Data"
 
 ## Overview
 
