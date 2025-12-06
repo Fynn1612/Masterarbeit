@@ -8,5 +8,6 @@ pandas
 matplotlib
 uncertainty-toolbox
 pickle
+seaborn
 
 

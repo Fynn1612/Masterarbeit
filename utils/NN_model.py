@@ -1,6 +1,18 @@
-# class for the custom neural network models for MC Dropout and Deep Ensembles
-# method for the mse loss and heteroscedastic loss
-# method for the training of the model
+"""
+Neural Network Models for Uncertainty Quantification
+
+This module provides the core neural network architecture and training utilities
+for MC Dropout and Deep Ensembles methods.
+
+Classes:
+- Custom_NN_Model: Flexible feedforward network with heteroscedastic output support
+
+Functions:
+- heteroscedastic_loss: NLL loss for learning mean and variance
+- mse_loss: Standard MSE loss for homoscedastic regression
+- train_model: Training loop with early stopping and validation
+- create_ensemble: Initialize multiple models for Deep Ensembles
+"""
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
@@ -46,11 +58,12 @@ class Custom_NN_Model(torch.nn.Module):
         mean = self.mean_layer(x)      # get the mean prediction from the output layer
 
         if self.loss_type == "heteroscedastic":
-            # if heteroscedastic loss is used, we need to pass the output through the variance layer
+            # Two-headed output: one for mean (μ), one for log-variance (log σ²)
+            # Log-variance ensures positivity after exp() transformation
             log_var = self.var_layer(x)  
                         
             return mean, log_var
-        
+         # For MSE loss, only return mean prediction
         return mean
     
 # create a custom loss function for heteroscedastic regression
@@ -119,7 +132,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
     # Adam optimizer with weight decay for regularization
     if optimizer is None:  # If no optimizer is provided, create a new one
         optimizer = torch.optim.AdamW(params = model.parameters(), lr = 0.001, weight_decay=0.0001)  
-        print("Using default AdamW optimizer with lr=0.01 and weight_decay=0.0001")
+        print("Using default AdamW optimizer with lr=0.001 and weight_decay=0.0001")
 
     if torch.cuda.is_available():
         X_train_tensor = X_train_tensor.cuda()
@@ -132,7 +145,7 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
     train_dataset = TensorDataset(X_train_tensor, y_train_tensor)
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
-    # Early Stopping values
+    # Early Stopping: Track best validation loss to prevent overfitting
     best_val_loss = np.inf
     epochs_no_improve = 0
     loss_history = []
@@ -193,6 +206,8 @@ def train_model(model, X_train_tensor, y_train_tensor, X_val_tensor, y_val_tenso
 def create_ensemble(n, input_dim, hidden_dims, do_rate, loss_type, lr, weight_decay, output_dim=1):
     """
     Create an ensemble of n models with the same architecture and optimizer.
+    Each model is independently initialized with different random weights,
+    which is crucial for diversity in Deep Ensembles.
 
     Args:
         n: number of models in the ensemble

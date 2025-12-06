@@ -1,3 +1,12 @@
+"""
+Custom Evaluation Metrics for Uncertainty Quantification
+
+This module provides additional metrics not included in standard libraries
+for evaluating prediction intervals and calibration.
+
+Functions:
+- evaluate_intervals: Calculates coverage (PICP) and Mean Prediction Interval Width (MPIW)
+"""
 import numpy as np
 from scipy import stats
 
@@ -22,11 +31,12 @@ def evaluate_intervals(y_pred: np.ndarray,
     if np.any(y_std <= 0):
         raise ValueError("y_std must be strictly positive")
 
-    #  quantile for the standard normal distribution
+    # Calculate z-score quantile for the standard normal distribution
+    # E.g., z ≈ 1.96 for 95% coverage
     alpha = 1 - coverage
     z = stats.norm.ppf(1 - alpha/2)  # z-value for upper bound, e.g. 1.96 for 95%
 
-    # Calculate intervals
+    # Calculate prediction intervals: μ ± z*σ
     y_lower = y_pred - z * y_std
     y_upper = y_pred + z * y_std
 

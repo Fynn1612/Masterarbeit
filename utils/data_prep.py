@@ -1,7 +1,14 @@
-# function that take the dataframes path as input and returns the train_set, val_set, test_set
-# fuction that takes as input train_set, val_set, test_set as dataframes and a list of categorial variables
-# determine the frequency of each category in the dataframes
-# return train_set, val_set, test_set dataframes with the frequency of each category
+"""
+Data Preprocessing Utilities for Master's Thesis
+
+This module provides functions for loading, transforming, and splitting
+the production data for uncertainty quantification experiments.
+
+Key functions:
+- cat_transform: Converts categorical variables to frequency encoding
+- load_tranform_and_split_data: Main data loading and preprocessing pipeline
+- set_seed: Sets random seeds for reproducibility across all libraries
+"""
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -105,10 +112,13 @@ def load_tranform_and_split_data(target, split_ratio=(0.6, 0.2, 0.2)):
 # function to set the seed for reproducibility
 def set_seed(seed: int):
     """
-    Set the seed for reproducibility.
+    Set the seed for reproducibility across all random number generators.
+    
+    Sets seeds for Python's random, NumPy, and PyTorch (CPU and GPU).
+    Also configures PyTorch for deterministic behavior.
 
     Args:
-        seed : seed for the random number generator
+        seed : Integer seed for the random number generator
     """
     random.seed(seed)
     np.random.seed(seed)
