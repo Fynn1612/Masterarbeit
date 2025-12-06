@@ -44,32 +44,39 @@ Masterarbeit/
 Install dependencies with:
 ```bash
 pip install -r requirements.txt
+```
 
-Main libraries:
+## Main libraries
 
-PyTorch (with CUDA support)
-GPyTorch
-NGBoost
-Optuna
-Uncertainty Toolbox
-scikit-learn
-pandas, numpy, matplotlib
-Usage
-Data Preparation: Configure the data path in data_prep.py based on your system
-Run Notebooks: Execute notebooks in models folder for each UQ method
-Results: Predictions and metrics are saved in Modelresults
+- PyTorch (with CUDA support)
+- GPyTorch
+- NGBoost
+- Optuna
+- Uncertainty Toolbox
+- scikit-learn
+- pandas, numpy, matplotlib
+
+## Usage
+1. **Data Preparation**: Configure the data path in `utils/data_prep.py` based on your system
+2. **Run Notebooks**: Execute notebooks in `models/` folder for each UQ method
+3. **Results**: Predictions and metrics are saved in `models/Modelresults/`
+
 Each notebook follows the same structure:
+- Data loading and preprocessing
+- Hyperparameter optimization with Optuna
+- Model training and evaluation across 10 runs
+- Results saving and visualization
 
-Data loading and preprocessing
-Hyperparameter optimization with Optuna
-Model training and evaluation across 10 runs
-Results saving and visualization
-Evaluation Metrics
-Accuracy: RMSE, MAE, R², Correlation
-Probabilistic Scoring: Negative Log-Likelihood (NLL), CRPS
-Calibration: Coverage (95% CI), Mean Prediction Interval Width (MPIW)
-Random Seeds
+## Evaluation Metrics
+    Accuracy: RMSE, MAE, R², Correlation
+    Probabilistic Scoring: Negative Log-Likelihood (NLL), CRPS
+    Calibration: Coverage (95% CI), Mean Prediction Interval Width (MPIW)
+
+## Random Seeds
 All experiments use the same 10 seeds for fair comparison:
+```python
+[42, 123, 777, 2024, 5250, 8888, 9876, 10001, 31415, 54321]
+```
 
 Author
 Fynn - Master's Thesis in Management and Engineering
