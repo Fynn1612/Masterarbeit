@@ -8,6 +8,10 @@ data/**/*.txt
 data/**/*.csv
 
 models/Modelsaves/
+models/Modelresults/
+models/__pycache__/
+
+Masterarbeit.code-workspace
 
 # Python
 *.pyc
@@ -40,5 +44,4 @@ Thumbs.db
 *.tmp
 *.bak
 
-/models/Modelsaves/
 /Test
