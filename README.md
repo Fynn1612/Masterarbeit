@@ -16,7 +16,7 @@ Each method is evaluated across 10 independent runs with different random seeds 
 ## Project Structure
 ```
 Masterarbeit/
-├── data/Produktionsdaten # Jupyter notebooks for data exploration/analysis
+├── data/Produktionsdaten # Jupyter notebooks for data exploration and preprocessing
 | ├── data_analysis_Prod_data.ipynb
 ├── models/ # Jupyter notebooks for each UQ method
 │ ├── Deep Ensembles.ipynb
