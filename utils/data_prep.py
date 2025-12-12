@@ -50,7 +50,7 @@ def cat_transform(train_df, val_df, test_df, cat_vars):
 
 
 # function that loads, transforms and splits the data it into train, val and test sets, and returns the feature names
-def load_tranform_and_split_data(target, split_ratio=(0.6, 0.2, 0.2)):
+def load_tranform_and_split_data(DATA_PATH, target, split_ratio=(0.6, 0.2, 0.2)):
     """
     Load, transform and split the data into train, val and test sets.
     Default: 60% training, 20% validation, 20% test set.
@@ -65,16 +65,17 @@ def load_tranform_and_split_data(target, split_ratio=(0.6, 0.2, 0.2)):
     """
     
     # check the computer name to determine the path to the data
-    if os.environ['COMPUTERNAME'] == 'FYNN':            # name of surface PC
-        path = r"C:\Users\Surface\Masterarbeit\data\Produktionsdaten\WZ_2_Feature_Engineered_Fynn6.xlsx"
-    elif os.environ['COMPUTERNAME'] == 'FYNNS-PC':  # desktop name
-        path = r"C:\Users\test\Masterarbeit\data\WZ_2_Feature_Engineered_Fynn6.xlsx"
+    # if os.environ['COMPUTERNAME'] == 'FYNN':            # name of surface PC
+    #     path = r"C:\Users\Surface\Masterarbeit\data\Produktionsdaten\WZ_2_Feature_Engineered_Fynn6.xlsx"
+    # elif os.environ['COMPUTERNAME'] == 'FYNNS-PC':  # desktop name
+    #     path = r"C:\Users\test\Masterarbeit\data\WZ_2_Feature_Engineered_Fynn6.xlsx"
         
-    else:
-        raise ValueError("Unbekannter Computername: " + os.environ['COMPUTERNAME'])
+    # else:
+    #     raise ValueError("Unbekannter Computername: " + os.environ['COMPUTERNAME'])
+    
     
     #load the data from the excel file
-    df = pd.read_excel(path)
+    df = pd.read_excel(DATA_PATH)
     
     # get the numerical features
     data_num = df.drop(target, axis = 1, inplace=False)
