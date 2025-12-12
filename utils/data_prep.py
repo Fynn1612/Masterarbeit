@@ -12,7 +12,6 @@ Key functions:
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-import os
 import pandas as pd
 import torch
 import numpy as np
@@ -63,17 +62,7 @@ def load_tranform_and_split_data(DATA_PATH, target, split_ratio=(0.6, 0.2, 0.2))
         X_train, X_val, X_test, y_train, y_val, y_test, feature_names 
         splitted and transformed dataframes with the features and target variable, and the feature names
     """
-    
-    # check the computer name to determine the path to the data
-    # if os.environ['COMPUTERNAME'] == 'FYNN':            # name of surface PC
-    #     path = r"C:\Users\Surface\Masterarbeit\data\Produktionsdaten\WZ_2_Feature_Engineered_Fynn6.xlsx"
-    # elif os.environ['COMPUTERNAME'] == 'FYNNS-PC':  # desktop name
-    #     path = r"C:\Users\test\Masterarbeit\data\WZ_2_Feature_Engineered_Fynn6.xlsx"
-        
-    # else:
-    #     raise ValueError("Unbekannter Computername: " + os.environ['COMPUTERNAME'])
-    
-    
+
     #load the data from the excel file
     df = pd.read_excel(DATA_PATH)
     
