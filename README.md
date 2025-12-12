@@ -28,7 +28,7 @@ Masterarbeit/
 │ ├── data_prep.py # Data loading and preprocessing
 │ ├── NN_model.py # Neural network architecture and training
 │ └── metrices.py # Custom evaluation metrics
-| ├── config.py # for Path dependencies
+├── config.py # for Path dependencies
 └── requirements.txt # Python dependencies
 ```
 
