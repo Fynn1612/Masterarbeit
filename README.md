@@ -23,7 +23,6 @@ Masterarbeit/
 │ ├── Heteroscedastic MC Dropout.ipynb
 │ ├── GPR.ipynb
 │ ├── NGBoost.ipynb
-│ ├── Modelresults/ # Saved predictions and results
 ├── utils/ # Core utility modules
 │ ├── data_prep.py # Data loading and preprocessing
 │ ├── NN_model.py # Neural network architecture and training
