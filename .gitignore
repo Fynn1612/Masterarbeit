@@ -1,7 +1,8 @@
 #lokale Dateien
 data/
 
-!data/data_analysis_raw_data.ipynb
+!data/Produktionsdaten/data_analysis_Prod_data.ipynb
+!data/Produktionsdaten/data_analysis_raw_data.ipynb
 data/**/*.xlsx
 
 models/Modelsaves/
