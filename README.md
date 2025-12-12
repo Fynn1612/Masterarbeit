@@ -17,6 +17,7 @@ Each method is evaluated across 10 independent runs with different random seeds 
 ```
 Masterarbeit/
 ├── data/Produktionsdaten # Jupyter notebooks for data exploration and preprocessing
+| ├── data/ # Production data (not included in repo)
 | ├── data_analysis_Prod_data.ipynb
 ├── models/ # Jupyter notebooks for each UQ method
 │ ├── Deep Ensembles.ipynb
@@ -27,7 +28,7 @@ Masterarbeit/
 │ ├── data_prep.py # Data loading and preprocessing
 │ ├── NN_model.py # Neural network architecture and training
 │ └── metrices.py # Custom evaluation metrics
-├── data/ # Production data (not included in repo)
+| ├── config.py # for Path dependencies
 └── requirements.txt # Python dependencies
 ```
 
