@@ -1,5 +1,9 @@
 #lokale Dateien
-data
+data/
+
+!data/data_analysis_raw_data.ipynb
+data/**/*.xlsx
+
 models/Modelsaves/
 
 # Python
